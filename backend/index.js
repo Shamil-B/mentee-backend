@@ -7,7 +7,7 @@ const mongoose = require("mongoose")
 // ############ Untouchable code ############
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://mentee-frontend-new.vercel.app/",
     methods: ["GET", "POST"],
   },
 });

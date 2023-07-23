@@ -5,29 +5,9 @@ const server = http.createServer(app);
 const cors = require("cors");
 const mongoose = require("mongoose")
 // ############ Untouchable code ############
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "https://mentee-frontend-new.vercel.app/",
-    methods: ["GET", "POST"],
-  },
-});
-
-const connectionString = `mongodb+srv://afmtoday:OlxwPFCF0rLMnA3e@cluster0.edrrjyh.mongodb.net/mentee?retryWrites=true&w=majority`;
-
-mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-  });
-
+const io = require("socket.io")(server);
 
 app.use(cors());
-
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, isTeacher, userId) => {
     console.log(
